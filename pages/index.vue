@@ -1,10 +1,19 @@
 <template>
     <div>
-        <h2>Home</h2>
+        <div v-if="isLoggedIn">
+            <navigate />
+        </div>
+        <div v-else>
+            <login />
+        </div>
     </div>
 </template>
 
 <script setup>
+
+
+const isLoggedIn = ref(true)
+const myValue = ref("sometime")
 
 </script>
 

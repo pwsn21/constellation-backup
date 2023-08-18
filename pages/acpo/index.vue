@@ -5,9 +5,9 @@
 </template>
 
 <script setup>
-    definePageMeta({
-        layout: 'acpo'
-    })
+    // definePageMeta({
+    //     layout: 'acpo'
+    // })
 </script>
 
 <style scoped>

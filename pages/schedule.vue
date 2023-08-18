@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>Schedule</h2>
+        <navigate />
     </div>
 </template>
 
