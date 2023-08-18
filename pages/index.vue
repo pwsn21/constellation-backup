@@ -12,7 +12,7 @@
 <script setup>
 
 
-const isLoggedIn = ref(true)
+const isLoggedIn = ref(false)
 const myValue = ref("sometime")
 
 </script>
