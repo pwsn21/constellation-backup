@@ -15,9 +15,13 @@
                 ACP-O Dashboard
 
                 <div>
-                    <div v-for="employee in employee">
-                        <div>{{ employee }}</div>
-                   </div>
+                //ok going to play locally, give me one sec ...
+                
+                <!-- still nothing -->
+                {{  employees.results[0].name }} 
+                    <!--<div v-for="employee in employees">
+                        <div>{{ employee.name }}</div>
+                   </div>-->
                 </div>  
 
             </div>
@@ -35,7 +39,9 @@
    //      layout: 'acpo'
 //     })
 
-    const { data: employee } = await useFetch('https://randomuser.me/api/?results=5')
+    //const { data: employee } = await useFetch('https://randomuser.me/api/?results=5')
+    const  employees  = await useFetch('https://randomuser.me/api/?results=5')
+
 </script>
 
 <style scoped>

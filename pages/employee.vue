@@ -16,7 +16,7 @@
 
                 <div class="grid grid-cols-3 gap-4 font-normal text-base">
                     <div v-for="employee in employee">
-                        <div>{{ employee.name.first }}</div>
+                        <div>{{ employee }}</div>
                    </div>
                 
                 </div>
@@ -36,7 +36,7 @@
    //      layout: 'acpo'
 //     })
 
-    const { data: employee } = await useFetch('https://randomuser.me/api/?results=20')
+    const { data: employee } = await useFetch('https://randomuser.me/api/?results=5')
 </script>
 
 <style scoped>
