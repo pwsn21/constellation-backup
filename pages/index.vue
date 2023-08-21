@@ -1,7 +1,9 @@
 <template>
     <div>
-        <div v-if="isLoggedIn">
+        <div v-if="isLoggedIn" class="flex">
             <navigate />
+            <content />
+            <slot />
         </div>
         <div v-else>
             <login />
@@ -12,7 +14,7 @@
 <script setup>
 
 
-const isLoggedIn = ref(false)
+const isLoggedIn = ref(true)
 const myValue = ref("sometime")
 
 </script>
