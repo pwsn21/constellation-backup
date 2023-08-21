@@ -11,8 +11,8 @@
             
             <!-- content -->
             <div class="mx-auto font-extrabold text-3xl">
-                
-                Schedule Dashboard
+            
+            <slot />
 
             </div>
         

@@ -12,13 +12,14 @@
             <!-- content -->
             <div class="mx-auto font-extrabold text-3xl">
                 
-                ACP-O Dashboard
+                Employee Dashboard
 
-                <div>
+                <div class="grid grid-cols-3 gap-4 font-normal text-base">
                     <div v-for="employee in employee">
-                        <div>{{ employee }}</div>
+                        <div>{{ employee.name.first }}</div>
                    </div>
-                </div>  
+                
+                </div>
 
             </div>
         
@@ -35,7 +36,7 @@
    //      layout: 'acpo'
 //     })
 
-    const { data: employee } = await useFetch('https://randomuser.me/api/?results=5')
+    const { data: employee } = await useFetch('https://randomuser.me/api/?results=20')
 </script>
 
 <style scoped>

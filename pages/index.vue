@@ -2,8 +2,7 @@
     <div>
         <div v-if="isLoggedIn" class="flex">
             <navigate />
-            <content />
-            <slot />
+            <nuxt />
         </div>
         <div v-else>
             <login />
