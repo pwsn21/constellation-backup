@@ -29,5 +29,7 @@
 </script>
 
 <style scoped>
-
+    .router-link-exact-active {
+        color: black;
+    }
 </style>
