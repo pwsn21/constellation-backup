@@ -2,11 +2,11 @@
     <div class="gaps-4">
         <div class="flex gap-2">
             <div>Current User :</div>
-            <div>{{ firebaseUser != "AuthNeeded" ? firebaseUser.email : "Not Signed In" }}</div>
+            <div>{{ firebaseUser != "AuthNeeded" || !firebaseUser ? "Not Signed In" : firebaseUser.email }}</div>
         </div>
         <div class="flex gap-2">
             <div>UID :</div>
-            <div>{{ firebaseUser != "AuthNeeded" ? firebaseUser.uid : "Not Signed In" }}</div>
+            <!-- <div>{{ firebaseUser != "AuthNeeded" ? firebaseUser.uid : "Not Signed In" }}</div> -->
         </div>
         <hr />
         <div class="flex gap-2">
