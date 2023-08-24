@@ -6,7 +6,7 @@
         </div>
         <div class="flex gap-2">
             <div>UID :</div>
-            <!-- <div>{{ firebaseUser != "AuthNeeded" ? firebaseUser.uid : "Not Signed In" }}</div> -->
+            <div>{{ firebaseUser != "AuthNeeded" ? "Not Signed In" : firebaseUser.uid }}</div>
         </div>
         <hr />
         <div class="flex gap-2">

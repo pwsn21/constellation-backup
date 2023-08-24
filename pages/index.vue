@@ -9,8 +9,8 @@
                 <a href="#">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Your Dashboard</h5>
                 </a>
-                <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-500">
-                <p class="text-white py-2">some text</p>
+                <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-500">  
+                <p class="text-white py-2">some text {{ firebaseUser }}</p>
 
                 <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     Read more
@@ -45,7 +45,7 @@
 </template>
 
 <script setup>
-
+const firebaseUser = useFirebaseUser()
 
 const isLoggedIn = ref(true)
 const myValue = ref("sometime")
