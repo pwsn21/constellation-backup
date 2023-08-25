@@ -26,7 +26,7 @@
 
                 <div class="relative overflow-x-auto  p-10">
                     <table class="relative w-full text-sm text-left text-gray-500 dark:text-gray-400 shadow-md sm:rounded-lg">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <thead class="text-xs uppercase bg-gray-600 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
                                     Employee Number
@@ -46,17 +46,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="employee in employee.results" class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <tr v-for="employee in employee.results" class="bg-slate-400 border-b dark:bg-gray-900 dark:border-gray-700">
+                                <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap dark:text-white">
                                     <NuxtLink to="/profile">{{  employee.location.street.number }}</NuxtLink>
                                 </th>
-                                <td class="px-6 py-4  bg-gray-50 dark:bg-gray-800">
+                                <td class="px-6 py-4 text-black bg-slate-500 dark:bg-gray-800">
                                     {{ employee.name.first }} {{ employee.name.last }}
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ employee.email }}
                                 </td>
-                                <td class="px-6 py-4  bg-gray-50 dark:bg-gray-800">
+                                <td class="px-6 py-4 text-black bg-slate-500 dark:bg-gray-800">
                                     {{ employee.dob.age }}
                                 </td>
                                 <td class="px-6 py-4">
