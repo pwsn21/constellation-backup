@@ -9,13 +9,9 @@
                 <a href="#">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Your Dashboard</h5>
                 </a>
-<<<<<<< Updated upstream
-                <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-500">
-                <p class="text-white py-2">some text</p>
-=======
+
                 <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-500">  
                 <p class="py-2">some text {{ firebaseUser ? firebaseUser.email : "Pending..." }}</p>
->>>>>>> Stashed changes
 
                 <button
                 @click="logout"
@@ -57,11 +53,8 @@
 </template>
 
 <script setup>
-<<<<<<< Updated upstream
 
 
-=======
->>>>>>> Stashed changes
 const isLoggedIn = ref(true)
 const firebaseUser = useFirebaseUser();
 
