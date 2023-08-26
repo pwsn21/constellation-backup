@@ -2,14 +2,13 @@
     <div>
         <div v-if="isLoggedIn">
         
-        <div class="flex">
-        <navigate />
-        <div class="flex-1">
+        
+        <navbar />
+        <div class="min-h-screen w-full !pl-0 text-center sm:!pl-60">
             <div class="p-10 m-10 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="#">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Your Dashboard</h5>
                 </a>
-
                 <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-500">  
                 <p class="py-2">some text {{ firebaseUser ? firebaseUser.email : "Pending..." }}</p>
 
@@ -44,7 +43,7 @@
         </div>
             
         </div>
-        </div>
+        
 
         <div v-else>
             <login />
@@ -53,8 +52,6 @@
 </template>
 
 <script setup>
-
-
 const isLoggedIn = ref(true)
 const firebaseUser = useFirebaseUser();
 

@@ -6,16 +6,22 @@
         </div>
 
 <div class="flex justify-center pt-10">    
-<div
-  class="block w-1\3 rounded-lg bg-slate-800 p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
-  <h2 class="font-semibold text-xl pb-5">Login</h2>
+
+  <div class="flex rounded-lg shadow-lg">
+ 
+  <div class="bg-slate-900 w-10 rounded-l-lg hidden md:block"></div>
+
+  <div class="w-96 rounded-r-lg bg-slate-800 p-6 dark:bg-neutral-700">
+  <h2 class="font-semibold text-xl">Login</h2>
+  <hr
+  class="my-4 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100" />
   <form  @submit.prevent="submit">
     <!--E-mail input-->
     <div class="relative mb-6" data-te-input-wrapper-init>
       <input
         type="email"
         v-model="email"
-        class="peer block min-h-[auto] w-full rounded border-0 bg-slate-600 px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-100"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-slate-600 px-3 py-2"
         placeholder="Email" />
     </div>
 
@@ -24,8 +30,7 @@
       <input
         type="password"
         v-model="password"
-        class="peer block min-h-[auto] w-full rounded border-0 bg-slate-600 px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-100"
-        id="exampleInputPassword2"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-slate-600 px-3 py-2"
         placeholder="Password" />
       
     </div>
@@ -74,7 +79,7 @@
     </p>
   </form>
 </div>
-
+</div>
 </div>
 </template>
 
