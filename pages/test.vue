@@ -1,14 +1,18 @@
 <template>
 
 
-<navbar />
-
-<div class="min-h-screen w-full !pl-0 text-center sm:!pl-60">this is a test</div>
+  <navbar2 />
 
 </template>
 
 <script setup>
+import {
+  Collapse,
+  Dropdown,
+  initTE,
+} from "tw-elements";
 
+initTE({ Collapse, Dropdown });
 </script>
 
 <style scoped>
