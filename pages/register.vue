@@ -52,24 +52,8 @@ const createTest = () =>{
     // the google firebase API's
     createUser(email.value, password.value);
 }
-const loginUser = async () => {
-        const result = await signInUser(email.value, password.value);
-        
-        //handle the simple boolean error
-        if (!result){
-            loginError.value = true;
-            loginErrorMessage.value = "Error Loggin In"
-        } else {
-            // the call to signInUser above will return credentials if
-            // successful. here we store them in the state managed variable
-            // so that its available to all pages/components.
-            firebaseUser.value = result;
 
-            // once creds are set, we can nav back to the root to 
-            // verify them and proceed into the rest of the application
-            navigateTo("/")
-        }
-    };
+
 </script>
 
 <style lang="scss" scoped>

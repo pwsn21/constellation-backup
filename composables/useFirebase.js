@@ -10,6 +10,7 @@ import {
 import { 
     doc,
     getDoc,
+    collection,
     getFirestore
 } from "firebase/firestore";
 
@@ -17,7 +18,13 @@ export const createUser = async (email, password) => {
     const auth = getAuth();
     const credentials = await createUserWithEmailAndPassword(auth, email, password)
         .then(() => {
+                firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid)
+                .set({
+                    first: '',
+                    last: ''
+                });
             navigateTo("/")
+
         })
         .catch((error) => {
             const errorCode = error.code;

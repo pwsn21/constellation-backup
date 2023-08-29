@@ -31,7 +31,7 @@
 <div v-for="todo in todos" class="flex justify-center">
 <div class="w-1/3 mt-10 grid grid-cols-2 border rounded-xl">
 
-    <div class="flex p-10 justify-center border bg-gray-700" :class="{'bg-green-700' : todo.done}">
+    <div class="flex p-10 justify-center rounded-l-lg bg-gray-700" :class="{'bg-green-700' : todo.done}">
     {{ todo.content }}
     </div>
 
@@ -63,36 +63,89 @@
 
 <script setup>
 
-import {ref} from 'vue'
-import { v4 as uuidv4 } from 'uuid';
+import {ref, onMounted} from 'vue'
+import {collection, getDocs, onSnapshot, doc, addDoc, deleteDoc, updateDoc, orderBy, query, getFirestore} from "firebase/firestore"; 
+
+const db = getFirestore();
+
+
+const todolistcollection = collection(db, 'todolist')
+const todolistdateorder = query(todolistcollection, orderBy("date", "desc"));
 
 
 const todos = ref([
-
+    // {
+    //     id: 'id1',
+    //     content: 'stuff 1',
+    //     done: false
+    // },
+    // {
+    //     id: 'id2',
+    //     content: 'stuff 2',
+    //     done: true
+    // }
 ])
+
+    onSnapshot(todolistdateorder, (querySnapshot) => {
+    const fbtodos = []
+    querySnapshot.forEach((doc) => {
+        const todo = {
+            id: doc.id,
+            content: doc.data().task,
+            done: doc.data().done
+        }
+        fbtodos.push(todo)
+    });
+    todos.value=fbtodos
+    });
+
+
+    // onMounted(async() => {
+    //     const querySnapshot = await getDocs(collection(db, 'todolist'))
+    //     let fbtodos = []
+    //     querySnapshot.forEach((doc) => {
+    //     console.log(doc.id, " => ", doc.data())
+    //     const todo = {
+    //         id: doc.id,
+    //         content: doc.data().task,
+    //         done: doc.data().done
+    //     }
+    //     fbtodos.push(todo)
+    // })
+    // todos.value = fbtodos
+    // })
 
 //add todo
 
 const newtodocontent = ref ('')
 
 const addtodo = () => {
-  const newtodo = {
-    id: uuidv4(),
-    content: newtodocontent.value,
-    done: false
-}
- todos.value.unshift(newtodo)
- newtodocontent.value = ''
+
+    addDoc(todolistcollection, {
+        task: newtodocontent.value,
+        done: false,
+        date: Date.now()
+});
+newtodocontent.value = ''
 }
 
+//   const newtodo = {
+//     id: uuidv4(),
+//     content: newtodocontent.value,
+//     done: false
+// }
+//  todos.value.unshift(newtodo)
+
 const deletetodo = id => {
-    todos.value = todos.value.filter(todo => todo.id !== id )
+    deleteDoc(doc(todolistcollection, id))
 }
 
 const donetodo = id => {
     const index = todos.value.findIndex(todo => todo.id === id)
     
-    todos.value[index].done = !todos.value[index].done
+    updateDoc(doc(todolistcollection, id), {
+    done: !todos.value[index].done
+});
 }
 
 </script>

@@ -10,7 +10,9 @@
                 <h5 class="mb-2 text-2xl font-bold tracking-tight">Your Dashboard</h5>
                 
                 <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-500">  
-                <p class="py-2">some text {{ firebaseUser ? firebaseUser.email : "Pending..." }}</p>
+                <p class="py-2">some text {{ firebaseUser ? firebaseUser.email : "Pending..." }} {{ firebaseUser.uid }}</p>
+
+
 
                 <button
                 @click="logout"
@@ -49,13 +51,23 @@
 const isLoggedIn = ref(true)
 const firebaseUser = useFirebaseUser();
 
+import {ref} from 'vue'
+import {collection, getDocs, onSnapshot, doc, addDoc, setDoc, deleteDoc, updateDoc, orderBy, query, getFirestore} from "firebase/firestore"; 
 
+const db = getFirestore();
 
 const logout = () =>{
     // from composables/useFirebase. handles the actual call to 
     // the google firebase API's
     signOutUser();
 }
+
+onMounted(async() => {
+    await setDoc(doc(db, "users", firebaseUser.uid), {first:'test'});
+    console.log('adduser')
+})
+
+
 </script>
 
 <style scoped>
