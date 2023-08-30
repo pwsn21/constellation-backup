@@ -3,18 +3,75 @@
     <div class="flex">
         <!-- navbar -->
         <navbar />      
-        <div class="flex-1 md:ml-60 md:mt-0 mt-16 justify-center">    
-            <div class=" flex justify-center">
-                <form @submit.prevent="adddops">
-                    <input v-model="dopsskill">
-                            <button
-                                class="rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
-                                Add
-                            </button>
-                </form>
-            </div>
-            <!-- Add DOPS Button -->
-                <NuxtLink to="/adddops/"><button type="button"
+        <div class="flex-1 md:ml-60 md:mt-0 mt-16 justify-center p-5">    
+
+            <!--Tabs navigation-->
+<ul
+  class="mb-5 flex list-none flex-row flex-wrap border-b-0 pl-0"
+  role="tablist"
+  data-te-nav-ref>
+  <li role="presentation">
+    <a
+      href="#tabs-home"
+      class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-neutral-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-primary data-[te-nav-active]:text-primary dark:text-neutral-400 dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-primary-400"
+      data-te-toggle="pill"
+      data-te-target="#tabs-home"
+      data-te-nav-active
+      role="tab"
+      aria-controls="tabs-home"
+      aria-selected="true"
+      >DOPS</a
+    >
+  </li>
+  <li role="presentation">
+    <a
+      href="#tabs-profile"
+      class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-neutral-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-primary data-[te-nav-active]:text-primary dark:text-neutral-400 dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-primary-400"
+      data-te-toggle="pill"
+      data-te-target="#tabs-profile"
+      role="tab"
+      aria-controls="tabs-profile"
+      aria-selected="false"
+      >MiniCX</a
+    >
+  </li>
+  <li role="presentation">
+    <a
+      href="#tabs-messages"
+      class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-neutral-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-primary data-[te-nav-active]:text-primary dark:text-neutral-400 dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-primary-400"
+      data-te-toggle="pill"
+      data-te-target="#tabs-messages"
+      role="tab"
+      aria-controls="tabs-messages"
+      aria-selected="false"
+      >Preceptor Reports</a
+    >
+  </li>
+  <li role="presentation">
+    <a
+      href="#tabs-contact"
+      class="disabled pointer-events-none my-2 block border-x-0 border-b-2 border-t-0 border-transparent bg-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-neutral-400 hover:isolate hover:border-transparent hover:bg-neutral-100 focus:isolate focus:border-transparent dark:text-neutral-600"
+      data-te-toggle="pill"
+      data-te-target="#tabs-contact"
+      role="tab"
+      aria-controls="tabs-contact"
+      aria-selected="false"
+      >Contact</a
+    >
+  </li>
+</ul>
+
+<!--Tabs content-->
+<div class="mb-6">
+  <div
+    class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+    id="tabs-home"
+    role="tabpanel"
+    aria-labelledby="tabs-home-tab"
+    data-te-tab-active>
+    
+    <!-- Add DOPS Button -->
+    <NuxtLink to="/adddops/"><button type="button"
                 class="ml-10 mb-1 inline-block rounded bg-neutral-800 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] transition duration-150 ease-in-out hover:bg-neutral-800 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-neutral-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:outline-none focus:ring-0 active:bg-neutral-900 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] dark:bg-neutral-900 dark:shadow-[0_4px_9px_-4px_#030202] dark:hover:bg-neutral-900 dark:hover:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)] dark:focus:bg-neutral-900 dark:focus:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)] dark:active:bg-neutral-900 dark:active:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)]">
                 Add DOPS</button></NuxtLink>
             <!-- DOPS Table -->
@@ -34,7 +91,7 @@
                     <tbody>
                         <tr v-for="dops in dopslist2" class="bg-slate-700 border-b border-gray-500 dark:bg-gray-900 dark:border-gray-700">
                             <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap dark:text-white">
-                                <NuxtLink to="#">{{ dops.createdon }}</NuxtLink>
+                                <NuxtLink to="#">{{ dops.shiftdate }}</NuxtLink>
                             </th>
                             <td class="px-6 py-4 text-black bg-slate-600 dark:bg-gray-800">{{ dops.mentor }}</td>
                             <td class="px-6 py-4 text-black">{{ dops.car }}</td>
@@ -51,6 +108,32 @@
                     </tbody>
                 </table>
             </div>
+
+  </div>
+  <div
+    class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+    id="tabs-profile"
+    role="tabpanel"
+    aria-labelledby="tabs-profile-tab">
+    Tab 2 content
+  </div>
+  <div
+    class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+    id="tabs-messages"
+    role="tabpanel"
+    aria-labelledby="tabs-profile-tab">
+    Tab 3 content
+  </div>
+  <div
+    class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+    id="tabs-contact"
+    role="tabpanel"
+    aria-labelledby="tabs-contact-tab">
+    Tab 4 content
+  </div>
+</div>
+
+            
         
         </div>
 
@@ -65,18 +148,21 @@ import {collection, getDocs, onSnapshot, doc, addDoc, deleteDoc, updateDoc, orde
 
 const db = getFirestore();
 
-const dopscollection = collection(db, 'users', 'testid', 'dops')
 const dopsskill = ref ('')
 const dopslist2 = ref ([])
 
+const dopscollection = collection(db, 'users', 'testid', 'dops')
+const dopsorder = query(dopscollection, orderBy("createdon", "desc"));
+
 //querydops
 onMounted(() => {
-    onSnapshot(dopscollection, (querySnapshot) => {
+    onSnapshot(dopsorder, (querySnapshot) => {
     const fbdopslist = [];
     querySnapshot.forEach((doc) => {
                 const dopsitems = {
                     id: doc.id,
                     createdon: doc.data().createdon,
+                    shiftdate: doc.data().shiftdate,
                     mentor: doc.data().mentor,
                     skill: doc.data().skill,
                     car: doc.data().car
