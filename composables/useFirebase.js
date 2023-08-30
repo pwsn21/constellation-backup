@@ -9,22 +9,17 @@ import {
  
 import { 
     doc,
-    getDoc,
-    collection,
+    getDoc, setDoc,
     getFirestore
 } from "firebase/firestore";
 
+
+
 export const createUser = async (email, password) => {
     const auth = getAuth();
-    const credentials = await createUserWithEmailAndPassword(auth, email, password)
+        const credentials = await createUserWithEmailAndPassword(auth, email, password)
         .then(() => {
-                // firebase.firestore().collection('users').doc(firebase.auth().firebaseUser.uid)
-                // .set({
-                //     first: '',
-                //     last: ''
-                // });
             navigateTo("/")
-
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -32,7 +27,11 @@ export const createUser = async (email, password) => {
             return error
         });
     return credentials;  
+   
 }
+
+
+
 
 export const signInUser = async (email, password) => {
     const auth = getAuth();

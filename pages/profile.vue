@@ -10,7 +10,7 @@
             <!-- content -->
             <div class="text-blue-100">
                 
-                <h2 class="pt-10 text-4xl font-semibold text-center">Profile for <div v-for="profile in profile.results" class="inline py-1">{{ profile.name.first }} {{ profile.name.last }}</div></h2>
+                <h2 class="pt-10 text-4xl font-semibold text-center">Profile for {{ firstName }} {{ lastName }}</h2>
 
                 <hr class="my-5 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100" />
                 
@@ -23,10 +23,10 @@
                         <div class="grid lg:grid-cols-2">
                             <div>
                                 <ul>
-                                    <li>Name: <div v-for="profile in profile.results" class="inline py-1">{{ profile.name.first }} {{ profile.name.last }}</div></li>
+                                    <li>Name: {{ firstName }} {{ lastName }}</li>
                                     <li>Gender: <div v-for="profile in profile.results" class="inline py-1">{{ profile.gender }} </div></li>
-                                    <li>Cell: <div v-for="profile in profile.results" class="inline py-1">{{ profile.phone }} </div></li>
-                                    <li>Email: <div v-for="profile in profile.results" class="inline py-1">{{ profile.email }} </div></li>
+                                    <li>Cell: {{ phonenumber}}</li>
+                                    <li>Email: <div v-for="profile in profile.results" class="inline py-1">{{ firebaseUser.email }} </div></li>
                                     <hr class="my-4 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100 lg:hidden" />
                                 </ul>
                             </div>
@@ -94,9 +94,35 @@
 </template>
 
 <script setup>
- //    definePageMeta({
-   //      layout: 'acpo'
-//     })
+
+import { doc, getDoc, getFirestore } from "firebase/firestore"; 
+
+
+const firebaseUser = useFirebaseUser();
+const db = getFirestore();
+
+// need to add unique ids
+const docRef = doc(db, "users", "tesasdftid");
+const docSnap = await getDoc(docRef);
+
+const firstName = ref (docSnap.data().firstName)
+const lastName = ref (docSnap.data().lastName)
+const phonenumber = ref (docSnap.data().phonenumber)
+
+if (docSnap.exists()) {
+  console.log("Document data:", docSnap.data());
+    
+    //need to nest these constants
+    const firstName = docSnap.data().firstName
+    const lastName = docSnap.data().lastName
+    const phonenumber = docSnap.data().phonenumber
+    console.log(firstName)
+
+} else {
+  // docSnap.data() will be undefined in this case
+  console.log("No such document!");
+}
+
 
     const {data:profile}  = await useFetch('https://randomuser.me/api/?results=1&nat=ca')
     const {data:pped}  = await useFetch('https://randomuser.me/api/?results=1&nat=ca')

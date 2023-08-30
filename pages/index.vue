@@ -51,21 +51,11 @@
 const isLoggedIn = ref(true)
 const firebaseUser = useFirebaseUser();
 
-import {ref} from 'vue'
-import {collection, getDocs, onSnapshot, doc, addDoc, setDoc, deleteDoc, updateDoc, orderBy, query, getFirestore} from "firebase/firestore"; 
-
-const db = getFirestore();
-
 const logout = () =>{
     // from composables/useFirebase. handles the actual call to 
     // the google firebase API's
     signOutUser();
 }
-
-onMounted(async() => {
-    await setDoc(doc(db, "users", firebaseUser.uid), {first:'test'});
-    console.log('adduser')
-})
 
 
 </script>
