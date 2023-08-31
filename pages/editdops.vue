@@ -5,7 +5,8 @@
         <navbar />
         
         <div class="flex-1 md:ml-60 md:mt-0 mt-16 justify-center p-10">    
-            <form @submit.prevent="adddops">
+            <h2 class="font-semibold text-2xl my-3">Edit DOPS</h2>
+            <form @submit.prevent="updatedops">
                 <ul>
                     <li><div class="relative mb-3" data-te-input-wrapper-init>
                         <!-- put in an actual datepicker -->
@@ -71,7 +72,7 @@
                 </ul>
                 <button                                 
                             class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
-                            Add DOPS
+                            Update DOPS
                             </button>
                 </form>
     
@@ -83,35 +84,55 @@
 
 <script setup>
 
+  
 
-import {collection, addDoc, getFirestore} from "firebase/firestore"; 
+
+
+import {collection,  doc, setDoc, updateDoc, getDoc, addDoc, getFirestore} from "firebase/firestore"; 
 
 const db = getFirestore();
-
-const shiftdate = ref ('')
-const mentor = ref ('')
-const car = ref ('')
-const dopsskill = ref ('')
-
-
 
 
 
 const dopscollection = collection(db, 'users', 'testid', 'dops')
 
+const docRef = doc(db, 'users', 'testid', 'dops', 'pnph5DX4EnqBoPhaoOAq');
+const docSnap = await getDoc(docRef);
+
+const shiftdate = ref (docSnap.data().shiftdate)
+const mentor = ref (docSnap.data().mentor)
+const car = ref (docSnap.data().car)
+const dopsskill = ref (docSnap.data().skill)
+
+if (docSnap.exists()) {
+  console.log("Document data:", docSnap.data());
+  const shiftdate = docSnap.data().shiftdate
+  const mentor = docSnap.data().mentor
+  const car = docSnap.data().car
+  const skill = docSnap.data().skill
+  
+} else {
+  // docSnap.data() will be undefined in this case
+  console.log("No such document!");
+}
+
 //adddops
 const adddops = () => {
-    addDoc(dopscollection, {
-        shiftdate: shiftdate.value, 
-        mentor:mentor.value, 
-        car: car.value, 
-        skill: dopsskill.value, 
-        createdon: Date.now()
-    }
-    )
+    addDoc(dopscollection, {shiftdate: shiftdate.value, mentor:mentor.value, car: car.value, skill: dopsskill.value, createdon: Date.now()})
+    console.log('test')
     navigateTo("/menteeforms")
 }
 
+const updatedops = () =>{
+    updateDoc(doc(db, 'users', 'testid', 'dops', 'pnph5DX4EnqBoPhaoOAq'), {
+        shiftdate:shiftdate.value, 
+        mentor:mentor.value, 
+        car:car.value, 
+        skill:dopsskill.value, 
+        updatedon:Date.now()
+    })
+    navigateTo("/menteeforms")
+}
 </script>
 
 <style scoped>
