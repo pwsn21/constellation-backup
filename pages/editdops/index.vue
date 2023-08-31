@@ -84,8 +84,7 @@
 
 <script setup>
 
-  
-
+const { id } = useRoute().params
 
 
 import {collection,  doc, setDoc, updateDoc, getDoc, addDoc, getFirestore} from "firebase/firestore"; 
@@ -96,7 +95,7 @@ const db = getFirestore();
 
 const dopscollection = collection(db, 'users', 'testid', 'dops')
 
-const docRef = doc(db, 'users', 'testid', 'dops', 'pnph5DX4EnqBoPhaoOAq');
+const docRef = doc(db, 'users', 'testid', 'dops', id);
 const docSnap = await getDoc(docRef);
 
 const shiftdate = ref (docSnap.data().shiftdate)
@@ -124,7 +123,7 @@ const adddops = () => {
 }
 
 const updatedops = () =>{
-    updateDoc(doc(db, 'users', 'testid', 'dops', 'pnph5DX4EnqBoPhaoOAq'), {
+    updateDoc(doc(db, 'users', 'testid', 'dops', id), {
         shiftdate:shiftdate.value, 
         mentor:mentor.value, 
         car:car.value, 
