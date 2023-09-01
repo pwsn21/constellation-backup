@@ -87,7 +87,7 @@
 
 import {collection, addDoc, getFirestore} from "firebase/firestore"; 
 
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 
 const firebaseUser = useFirebaseUser();
 const auth = getAuth();
@@ -102,21 +102,8 @@ const car = ref ('')
 const dopsskill = ref ('')
 
 
+console.log(firebaseUser.uid)
 
-
-const userid = onAuthStateChanged(auth, (firebaseUser) => {
-   if (firebaseUser) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/auth.user
-    const uid = firebaseUser.uid;
-    console.log (uid)
-    
-  } else {
-
-  }
-})
-
-console.log(userid)
 
 const dopscollection = collection(db, 'users', 'testid', 'dops')
 
